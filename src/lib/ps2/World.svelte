@@ -21,23 +21,23 @@
 
 {#await world then data}
 <div class="flex justify-center p-4">
-    <dl class="list-dl px-4 pb-4">
+    <ol class="list-ol px-4 pb-4">
         <h5 class="text-center">Continents</h5>
-        <div class="flex-wrap flex-grow lg:justify-evenly">
+        <div class="flex-wrap flex-grow space-x-6 space-y-4">
             {#each zones as zone}
-                <div class="justify-start">
+                <div class="inline-flex border-2 border-surface-600 rounded-2xl">
+                    <span class="flex-auto px-3">
+                        <dt>{zone}</dt>
+                    </span>
                     {#if data.continents[zone] === 'open'}
                         <span class="badge bg-primary-500">Open</span>
                     {:else}
                         <span class="badge bg-error-500">Closed</span>
                     {/if}
-                    <span class="flex-auto">
-                        <dt>{zone}</dt>
-                    </span>
                 </div>
             {/each}
         </div>
-    </dl>
+    </ol>
     <div class="table-container">
         <h5 class="text-center pb-4">Population</h5>
         <div class="flex-auto justify-center">
