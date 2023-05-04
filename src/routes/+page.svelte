@@ -11,12 +11,7 @@
 
 <div class="container mx-auto p-4 lg:p-8 space-y-8 text-center">
 	<h1>Warpgate</h1>
-	<p>Planetside 2 API data</p>
-	<section>
-		<a class="btn variant-filled-primary" href="https://kit.svelte.dev/">SvelteKit</a>
-		<a class="btn variant-filled-secondary" href="https://tailwindcss.com/">Tailwind</a>
-		<a class="btn variant-filled-tertiary" href="https://github.com/">GitHub</a>
-	</section>
+	<p>Planetside 2 server stats</p>
 	<TabGroup 
 		justify="justify-center"
 		active="variant-filled-primary"
