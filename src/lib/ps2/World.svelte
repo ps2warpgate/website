@@ -20,10 +20,10 @@
 </script>
 
 {#await world then data}
-<div class="flex-auto justify-center">
+<div class="flex-auto">
     <dl class="list-dl px-4 pb-4">
         <h5 class="text-center">Continents</h5>
-        <div>
+        <div class="sm: flex-col">
             {#each zones as zone}
                 {#if data.continents[zone] === 'open'}
                     <span class="badge bg-primary-500">Open</span>

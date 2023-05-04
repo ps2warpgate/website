@@ -33,7 +33,7 @@
 							</svg>
 						</span>
 					</button>
-					<strong class="text-xl uppercase">Skeleton</strong>
+					<strong class="text-xl uppercase">Warpgate</strong>
 				</div>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
@@ -44,14 +44,6 @@
 					rel="noreferrer"
 				>
 					Discord
-				</a>
-				<a
-					class="btn btn-sm variant-ghost-surface"
-					href="https://twitter.com/SkeletonUI"
-					target="_blank"
-					rel="noreferrer"
-				>
-					Twitter
 				</a>
 				<a
 					class="btn btn-sm variant-ghost-surface"
