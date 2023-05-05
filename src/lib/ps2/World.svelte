@@ -14,6 +14,8 @@
         [40, 'SolTech'],
     ])
     const zones = ['Amerish', 'Esamir', 'Hossin', 'Indar', 'Oshur']
+
+    const alert = true; // For future alert display
 </script>
 
 {#await getWorld(world_id)}
@@ -42,20 +44,37 @@
         <ol class="list-ol">
             <div class="space-y-4">
                 {#each zones as zone}
-                    <div class="border-2 border-surface-600 rounded-2xl lg:w-40">
-                        <div class="flow-root">
-                            <span class="float-left pl-3">
-                                <dt>{zone}</dt>
-                            </span>
-                            <div class="flex float-right">
-                                {#if data.continents[zone] === 'open'}
-                                    <span class="w-14 badge bg-primary-500">Open</span>
-                                {:else}
-                                    <span class="w-14 badge bg-error-500">Closed</span>
-                                {/if}
+                    {#if alert === true}
+                        <div class="border-2 border-red-600 rounded-2xl lg:w-40">
+                            <div class="flow-root">
+                                <span class="float-left pl-3">
+                                    <dt>{zone}</dt>
+                                </span>
+                                <div class="flex float-right">
+                                    {#if data.continents[zone] === 'open'}
+                                        <span class="w-14 badge bg-primary-500">Open</span>
+                                    {:else}
+                                        <span class="w-14 badge bg-error-500">Closed</span>
+                                    {/if}
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {:else}
+                        <div class="border-2 border-surface-600 rounded-2xl lg:w-40">
+                            <div class="flow-root">
+                                <span class="float-left pl-3">
+                                    <dt>{zone}</dt>
+                                </span>
+                                <div class="flex float-right">
+                                    {#if data.continents[zone] === 'open'}
+                                        <span class="w-14 badge bg-primary-500">Open</span>
+                                    {:else}
+                                        <span class="w-14 badge bg-error-500">Closed</span>
+                                    {/if}
+                                </div>
+                            </div>
+                        </div>
+                    {/if}
                 {/each}
             </div>
         </ol>
