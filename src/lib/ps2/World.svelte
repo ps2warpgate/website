@@ -1,12 +1,9 @@
 <script lang="ts">
+    import { ProgressRadial } from "@skeletonlabs/skeleton";
+    import { getWorld } from "./world";
+	import PieChart from "./PieChart.svelte";
+
     export let world_id: number;
-    
-    async function getWorld(id = world_id) {
-		const response = await fetch(`https://api.wupass.xyz/worlds/?id=${id}`)
-		const world = await response.json()
-		return world
-    }
-    let world = getWorld();
 
     const world_names = new Map<number, string>([
         [1, 'Connery'],
@@ -19,57 +16,68 @@
     const zones = ['Amerish', 'Esamir', 'Hossin', 'Indar', 'Oshur']
 </script>
 
-{#await world then data}
-<div class="flex justify-center p-4">
-    <ol class="list-ol px-4 pb-4">
-        <h5 class="text-center">Continents</h5>
-        <div class="flex-wrap flex-grow space-x-6 space-y-4">
-            {#each zones as zone}
-                <div class="inline-flex border-2 border-surface-600 rounded-2xl">
-                    <span class="flex-auto px-3">
-                        <dt>{zone}</dt>
-                    </span>
-                    {#if data.continents[zone] === 'open'}
-                        <span class="badge bg-primary-500">Open</span>
-                    {:else}
-                        <span class="badge bg-error-500">Closed</span>
-                    {/if}
-                </div>
-            {/each}
+{#await getWorld(world_id)}
+<div class="md:flex">
+    <section class="card w-full">
+        <div class="p-4 space-y-4">
+            <div class="placeholder" />
+            <div class="grid grid-cols-3 gap-8">
+                <div class="placeholder" />
+                <div class="placeholder" />
+                <div class="placeholder" />
+            </div>
+            <div class="grid grid-cols-4 gap-4">
+                <div class="placeholder" />
+                <div class="placeholder" />
+                <div class="placeholder" />
+                <div class="placeholder" />
+            </div>
         </div>
-    </ol>
-    <div class="table-container">
+    </section>
+</div>
+{:then data}
+<div class="md:flex justify-center p-4">
+    <div class="md:flex-col">
+        <h5 class="text-center mb-4">Continents</h5>
+        <ol class="list-ol">
+            <div class="space-y-4">
+                {#each zones as zone}
+                    <div class="border-2 border-surface-600 rounded-2xl lg:w-40">
+                        <div class="flow-root">
+                            <span class="float-left pl-3">
+                                <dt>{zone}</dt>
+                            </span>
+                            <div class="flex float-right">
+                                {#if data.continents[zone] === 'open'}
+                                    <span class="w-14 badge bg-primary-500">Open</span>
+                                {:else}
+                                    <span class="w-14 badge bg-error-500">Closed</span>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                {/each}
+            </div>
+        </ol>
+    </div>
+    <div class="invisible md:visible flex-col px-12">
+        <span class="divider-vertical h-full" />
+    </div>
+    <div class="md:flex-col">
         <h5 class="text-center pb-4">Population</h5>
-        <div class="flex-auto justify-center">
-            <table class="table lg:flex-grow mx-auto">
-                <thead>
-                    <tr>
-                        <th>Faction</th>
-                        <th>Population</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>NC</td>
-                        <td>{data.population.nc}</td>
-                    </tr>
-                    <tr>
-                        <td>TR</td>
-                        <td>{data.population.tr}</td>
-                    </tr>
-                    <tr>
-                        <td>VS</td>
-                        <td>{data.population.vs}</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="1">Total</th>
-                        <td>{data.population.total}</td>
-                    </tr>
-                </tfoot>
-            </table>
+        <div class="flex justify-center pb-4">
+            <div class="border-none rounded-2xl">
+                <div class="justify-evenly">
+                    <div class="flex pb-2">
+                        <span class="badge bg-surface-500 rounded-r-2xl">Total: {data.population.total}</span>
+                        <span class="badge bg-blue-500 rounded-none">NC: {data.population.nc}</span>
+                        <span class="badge bg-red-500 rounded-none">TR: {data.population.tr}</span>
+                        <span class="badge bg-purple-500 rounded-l-2xl">VS: {data.population.vs}</span>
+                    </div>
+                </div>
+            </div>
         </div>
+        <PieChart world_id={world_id} />
     </div>
 </div>
 {/await}
