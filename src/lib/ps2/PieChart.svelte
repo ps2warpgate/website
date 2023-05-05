@@ -14,7 +14,6 @@
     export let world_id: number;
 
     ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
-
 </script>
 
 {#await chartData(world_id)}
