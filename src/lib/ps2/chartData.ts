@@ -1,7 +1,7 @@
 import { getWorld } from "./world";
 
 export async function chartData(id: number) {
-    let world = await getWorld(id);
+    const world = await getWorld(id);
     const data = {
         labels: ['NC', 'TR', 'VS'],
         datasets: [
@@ -23,3 +23,11 @@ export async function chartData(id: number) {
     }
     return data
 }
+export const options = {
+    responsive: true,
+    plugins: {
+        legend: {
+            display: false,
+        },
+    },
+};

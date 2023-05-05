@@ -1,10 +1,7 @@
 <script lang="ts">
     import { ProgressRadial } from '@skeletonlabs/skeleton';
-    import { Pie } from 'svelte-chartjs'
-    import { chartData } from './chartData';
-
-    export let world_id: number;
-
+    import { Pie } from 'svelte-chartjs';
+    import { chartData, options } from './chartData';
     import {
         Chart as ChartJS,
         Title,
@@ -14,11 +11,10 @@
         CategoryScale,
     } from 'chart.js';
 
+    export let world_id: number;
+
     ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 
-    let options = {
-        responsive: true,
-    }
 </script>
 
 {#await chartData(world_id)}

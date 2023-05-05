@@ -36,10 +36,10 @@
     </section>
 </div>
 {:then data}
-<div class="md:flex p-4">
+<div class="md:flex justify-center p-4">
     <div class="md:flex-col">
-        <ol class="list-ol px-4 pb-4">
-            <h5 class="text-center mb-4">Continents</h5>
+        <h5 class="text-center mb-4">Continents</h5>
+        <ol class="list-ol">
             <div class="space-y-4">
                 {#each zones as zone}
                     <div class="border-2 border-surface-600 rounded-2xl lg:w-40">
@@ -60,42 +60,23 @@
             </div>
         </ol>
     </div>
-    <div class="md:flex-col">
-        <div class="table-container">
-            <h5 class="text-center pb-4">Population</h5>
-            <div class="justify-center">
-                <table class="table lg:flex-grow">
-                    <thead>
-                        <tr>
-                            <th>Faction</th>
-                            <th>Population</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NC</td>
-                            <td>{data.population.nc}</td>
-                        </tr>
-                        <tr>
-                            <td>TR</td>
-                            <td>{data.population.tr}</td>
-                        </tr>
-                        <tr>
-                            <td>VS</td>
-                            <td>{data.population.vs}</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th colspan="1">Total</th>
-                            <td>{data.population.total}</td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
+    <div class="invisible md:visible flex-col px-12">
+        <span class="divider-vertical h-full" />
     </div>
     <div class="md:flex-col">
+        <h5 class="text-center pb-4">Population</h5>
+        <div class="flex justify-center pb-4">
+            <div class="border-none rounded-2xl">
+                <div class="justify-evenly">
+                    <div class="flex pb-2">
+                        <span class="badge bg-surface-500 rounded-r-2xl">Total: {data.population.total}</span>
+                        <span class="badge bg-blue-500 rounded-none">NC: {data.population.nc}</span>
+                        <span class="badge bg-red-500 rounded-none">TR: {data.population.tr}</span>
+                        <span class="badge bg-purple-500 rounded-l-2xl">VS: {data.population.vs}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <PieChart world_id={world_id} />
     </div>
 </div>
