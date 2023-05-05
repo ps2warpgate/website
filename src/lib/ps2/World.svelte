@@ -1,12 +1,9 @@
 <script lang="ts">
+    import { ProgressRadial } from "@skeletonlabs/skeleton";
+    import { getWorld } from "./world";
+	import PieChart from "./PieChart.svelte";
+
     export let world_id: number;
-    
-    async function getWorld(id = world_id) {
-		const response = await fetch(`https://api.wupass.xyz/worlds/?id=${id}`)
-		const world = await response.json()
-		return world
-    }
-    let world = getWorld();
 
     const world_names = new Map<number, string>([
         [1, 'Connery'],
@@ -19,23 +16,44 @@
     const zones = ['Amerish', 'Esamir', 'Hossin', 'Indar', 'Oshur']
 </script>
 
-{#await world then data}
+{#await getWorld(world_id)}
+<div class="md:flex">
+    <section class="card w-full">
+        <div class="p-4 space-y-4">
+            <div class="placeholder" />
+            <div class="grid grid-cols-3 gap-8">
+                <div class="placeholder" />
+                <div class="placeholder" />
+                <div class="placeholder" />
+            </div>
+            <div class="grid grid-cols-4 gap-4">
+                <div class="placeholder" />
+                <div class="placeholder" />
+                <div class="placeholder" />
+                <div class="placeholder" />
+            </div>
+        </div>
+    </section>
+</div>
+{:then data}
 <div class="md:flex p-4">
     <div class="md:flex-col">
         <ol class="list-ol px-4 pb-4">
             <h5 class="text-center mb-4">Continents</h5>
-            <div class="space-x-6 space-y-4">
+            <div class="space-y-4">
                 {#each zones as zone}
-                    <div class="lg:flex-col">
-                        <div class="inline-flex border-2 border-surface-600 rounded-2xl">
-                            <span class="px-3">
+                    <div class="border-2 border-surface-600 rounded-2xl lg:w-40">
+                        <div class="flow-root">
+                            <span class="float-left pl-3">
                                 <dt>{zone}</dt>
                             </span>
-                            {#if data.continents[zone] === 'open'}
-                                <span class="badge bg-primary-500">Open</span>
-                            {:else}
-                                <span class="badge bg-error-500">Closed</span>
-                            {/if}
+                            <div class="flex float-right">
+                                {#if data.continents[zone] === 'open'}
+                                    <span class="w-14 badge bg-primary-500">Open</span>
+                                {:else}
+                                    <span class="w-14 badge bg-error-500">Closed</span>
+                                {/if}
+                            </div>
                         </div>
                     </div>
                 {/each}
@@ -76,6 +94,9 @@
                 </table>
             </div>
         </div>
+    </div>
+    <div class="md:flex-col">
+        <PieChart world_id={world_id} />
     </div>
 </div>
 {/await}
