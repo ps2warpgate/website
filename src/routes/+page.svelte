@@ -1,12 +1,8 @@
 <script lang="ts">
-	import World from '$lib/ps2/World.svelte';
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
-	import { page } from '$app/stores';
+	import World from '$lib/ps2/World.svelte';
 
-	// export let data;
 	export let tabSet: number = 1;
-	// export let world = $page.data.worlds
-	// console.log(world.population.nc)
 </script>
 
 <div class="container mx-auto p-4 lg:p-8 space-y-8 text-center">
@@ -31,7 +27,7 @@
 		<svelte:fragment slot="panel">
 			{#if tabSet !== 0}
 				{#key tabSet}
-					<World world_id={tabSet} />
+					<World worldId={tabSet} />
 				{/key}
 			{/if}
 		</svelte:fragment>

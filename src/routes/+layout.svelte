@@ -5,9 +5,13 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
+	import { QueryClientProvider } from '@tanstack/svelte-query'
+  	import type { LayoutData } from './$types'
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
 	import Navigation from '$lib/Navigation/Navigation.svelte';
+
+	export let data: LayoutData
 
 	function drawerOpen(): void {
 		drawerStore.open({});
@@ -52,5 +56,9 @@
 		<Navigation />
 	</svelte:fragment>
 	<!-- Page Route Content -->
-	<slot />
+	<QueryClientProvider client={data.queryClient}>
+		<slot />
+	</QueryClientProvider>
 </AppShell>
+
+
