@@ -1,13 +1,12 @@
 import { getWorld } from "./world";
 
-export async function chartData(id: number) {
-    const world = await getWorld(id);
+export function chartData(id: number, population: number[]) {
     const data = {
         labels: ['NC', 'TR', 'VS'],
         datasets: [
             {
                 label: 'Population',
-                data: [world.population.nc, world.population.tr, world.population.vs],
+                data: population,
                 backgroundColor: [
                     '#143376', // NC dark color
                     '#950C00', // TR dark color

@@ -1,9 +1,11 @@
 <script lang="ts">
-    import { ProgressRadial } from "@skeletonlabs/skeleton";
     import { getWorld } from "./world";
 	import PieChart from "./PieChart.svelte";
+    import { createQuery } from '@tanstack/svelte-query'
+    import { getWorldById } from './data'
+    import type { Ps2World } from './types'
 
-    export let world_id: number;
+    // export let world_id: number;
 
     const world_names = new Map<number, string>([
         [1, 'Connery'],
@@ -14,28 +16,23 @@
         [40, 'SolTech'],
     ])
     const zones = ['Amerish', 'Esamir', 'Hossin', 'Indar', 'Oshur']
+
+    export let worldId = 1
+
+    const world = createQuery<Ps2World, Error>({
+        queryKey: ['world', worldId],
+        queryFn: () => getWorldById(worldId),
+    })
 </script>
 
-{#await getWorld(world_id)}
-<div class="md:flex">
-    <section class="card w-full">
-        <div class="p-4 space-y-4">
-            <div class="placeholder" />
-            <div class="grid grid-cols-3 gap-8">
-                <div class="placeholder" />
-                <div class="placeholder" />
-                <div class="placeholder" />
-            </div>
-            <div class="grid grid-cols-4 gap-4">
-                <div class="placeholder" />
-                <div class="placeholder" />
-                <div class="placeholder" />
-                <div class="placeholder" />
-            </div>
-        </div>
-    </section>
-</div>
-{:then data}
+{#if !worldId || $world.isLoading}
+<span>Loading...</span>
+{/if}
+{#if $world.error}
+<span>Error: {$world.error.message}</span>
+{/if}
+
+{#if $world.isSuccess}
 <div class="md:flex justify-center p-4">
     <div class="md:flex-col">
         <h5 class="text-center mb-4">Continents</h5>
@@ -48,7 +45,7 @@
                                 <dt>{zone}</dt>
                             </span>
                             <div class="flex float-right">
-                                {#if data.continents[zone] === 'open'}
+                                {#if $world.data.continents[zone] === 'open'} <!-- FIX THIS -->
                                     <span class="w-14 badge bg-primary-500">Open</span>
                                 {:else}
                                     <span class="w-14 badge bg-error-500">Closed</span>
@@ -69,15 +66,16 @@
             <div class="border-none rounded-2xl">
                 <div class="justify-evenly">
                     <div class="flex pb-2">
-                        <span class="badge bg-surface-500 rounded-r-2xl">Total: {data.population.total}</span>
-                        <span class="badge bg-blue-500 rounded-none">NC: {data.population.nc}</span>
-                        <span class="badge bg-red-500 rounded-none">TR: {data.population.tr}</span>
-                        <span class="badge bg-purple-500 rounded-l-2xl">VS: {data.population.vs}</span>
+                        <span class="badge bg-surface-500 rounded-r-2xl">Total: {$world.data.population.total}</span>
+                        <span class="badge bg-blue-500 rounded-none">NC: {$world.data.population.nc}</span>
+                        <span class="badge bg-red-500 rounded-none">TR: {$world.data.population.tr}</span>
+                        <span class="badge bg-purple-500 rounded-l-2xl">VS: {$world.data.population.vs}</span>
                     </div>
                 </div>
             </div>
         </div>
-        <PieChart world_id={world_id} />
+        <PieChart world_id={worldId} population={[$world.data.population.nc, $world.data.population.tr, $world.data.population.vs]} />
     </div>
 </div>
-{/await}
+{/if}
+
