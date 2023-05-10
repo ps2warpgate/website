@@ -12,13 +12,8 @@
 <div class="container mx-auto p-4 lg:p-8 space-y-8 text-center">
 	<h1>Warpgate</h1>
 	<p>Planetside 2 server stats</p>
-	<TabGroup 
-		justify="justify-center"
-		active="variant-filled-primary"
-		hover="hover:variant-soft-primary"
-		flex="flex-1 lg:flex-none"
-		rounded="rounded-container-token"
-		border=""
+	<TabGroup
+		justify="md:justify-center"
 		class="bg-surface-100-800-token lg:w-full"
 	>
 		<Tab bind:group={tabSet} name="connery" value={1}>Connery</Tab>
