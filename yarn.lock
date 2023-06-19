@@ -406,14 +406,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:^1.16.2":
-  version: 1.16.2
-  resolution: "@sveltejs/kit@npm:1.16.2"
+"@sveltejs/kit@npm:^1.20.4":
+  version: 1.20.4
+  resolution: "@sveltejs/kit@npm:1.20.4"
   dependencies:
-    "@sveltejs/vite-plugin-svelte": ^2.1.1
+    "@sveltejs/vite-plugin-svelte": ^2.4.1
     "@types/cookie": ^0.5.1
     cookie: ^0.5.0
-    devalue: ^4.3.0
+    devalue: ^4.3.1
     esm-env: ^1.0.0
     kleur: ^4.1.5
     magic-string: ^0.30.0
@@ -421,21 +421,34 @@ __metadata:
     sade: ^1.8.1
     set-cookie-parser: ^2.6.0
     sirv: ^2.0.2
-    tiny-glob: ^0.2.9
     undici: ~5.22.0
   peerDependencies:
-    svelte: ^3.54.0
+    svelte: ^3.54.0 || ^4.0.0-next.0
     vite: ^4.0.0
   bin:
     svelte-kit: svelte-kit.js
-  checksum: c6d170b63c1ec00ecb8a9c2e65611a24233e5cbaeaed2209736906306d8e7715725c5145b0379e06b92c3552ad4502b1eac733ecf1756a723ee7001775a8566d
+  checksum: 957e19c4afa9c7c9d09dedf7cc1f596fdac06a84db9f406bab618f8b7dabbc906938f63b86a57560ee9cafee63f117d96235ad67e2431fc36e307c60f378fc3d
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "@sveltejs/vite-plugin-svelte@npm:2.1.1"
+"@sveltejs/vite-plugin-svelte-inspector@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@sveltejs/vite-plugin-svelte-inspector@npm:1.0.2"
   dependencies:
+    debug: ^4.3.4
+  peerDependencies:
+    "@sveltejs/vite-plugin-svelte": ^2.2.0
+    svelte: ^3.54.0 || ^4.0.0-next.0
+    vite: ^4.0.0
+  checksum: e46ee14f0ef25e6ac249f703d8d84874801186d124faf648a4889deb0a45f4ef6d68a4f9baea1fc699bb7ba792c1680b712207e73cab5293162aa81d355d3bb9
+  languageName: node
+  linkType: hard
+
+"@sveltejs/vite-plugin-svelte@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "@sveltejs/vite-plugin-svelte@npm:2.4.1"
+  dependencies:
+    "@sveltejs/vite-plugin-svelte-inspector": ^1.0.2
     debug: ^4.3.4
     deepmerge: ^4.3.1
     kleur: ^4.1.5
@@ -443,9 +456,9 @@ __metadata:
     svelte-hmr: ^0.15.1
     vitefu: ^0.2.4
   peerDependencies:
-    svelte: ^3.54.0
+    svelte: ^3.54.0 || ^4.0.0-next.0
     vite: ^4.0.0
-  checksum: 42187a64bcf22a071b4dcc094a1ef18633e7a2f83b7f800142e6dca33b1dd0397c6773555a5ff48b65eac2365ed407a7c30217461536666e59cbab9d10ec10f7
+  checksum: 9beddaf2bf1a5082db60d6c6b3236089032c7dd9543cf0fd5b4bf6e6999fd6cb3ff9722b4a953afb16f2f85e08c40c6c58fbf44afe82fb248bff929d63411999
   languageName: node
   linkType: hard
 
@@ -1252,10 +1265,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"devalue@npm:^4.3.0":
-  version: 4.3.0
-  resolution: "devalue@npm:4.3.0"
-  checksum: ad9a7d496e0b4f878ecf799bd93250330d226c525e5e5ac709cb63e267f800a5a85de21ad1d32e2981533f99bfc5025e480b1af2fe9d7cef6cd3bb8c55d7b04c
+"devalue@npm:^4.3.1":
+  version: 4.3.2
+  resolution: "devalue@npm:4.3.2"
+  checksum: 034530e3910a096e528ca6481cd80ab2a21f4a5b813fb896d421eadf52dc969dfbbd5677aa06d28a6448a0f2f7e7d91d9ed88cd9aaa497f4b34e427d80c2a8a5
   languageName: node
   linkType: hard
 
@@ -1816,13 +1829,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globalyzer@npm:0.1.0":
-  version: 0.1.0
-  resolution: "globalyzer@npm:0.1.0"
-  checksum: 419a0f95ba542534fac0842964d31b3dc2936a479b2b1a8a62bad7e8b61054faa9b0a06ad9f2e12593396b9b2621cac93358d9b3071d33723fb1778608d358a1
-  languageName: node
-  linkType: hard
-
 "globby@npm:^11.1.0":
   version: 11.1.0
   resolution: "globby@npm:11.1.0"
@@ -1834,13 +1840,6 @@ __metadata:
     merge2: ^1.4.1
     slash: ^3.0.0
   checksum: b4be8885e0cfa018fc783792942d53926c35c50b3aefd3fdcfb9d22c627639dc26bd2327a40a0b74b074100ce95bb7187bfeae2f236856aa3de183af7a02aea6
-  languageName: node
-  linkType: hard
-
-"globrex@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "globrex@npm:0.1.2"
-  checksum: adca162494a176ce9ecf4dd232f7b802956bb1966b37f60c15e49d2e7d961b66c60826366dc2649093cad5a0d69970cfa8875bd1695b5a1a2f33dcd2aa88da3c
   languageName: node
   linkType: hard
 
@@ -3498,16 +3497,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tiny-glob@npm:^0.2.9":
-  version: 0.2.9
-  resolution: "tiny-glob@npm:0.2.9"
-  dependencies:
-    globalyzer: 0.1.0
-    globrex: ^0.1.2
-  checksum: aea5801eb6663ddf77ebb74900b8f8bd9dfcfc9b6a1cc8018cb7421590c00bf446109ff45e4b64a98e6c95ddb1255a337a5d488fb6311930e2a95334151ec9c6
-  languageName: node
-  linkType: hard
-
 "tinybench@npm:^2.4.0":
   version: 2.5.0
   resolution: "tinybench@npm:2.5.0"
@@ -3855,7 +3844,7 @@ __metadata:
     "@skeletonlabs/skeleton": ^1.2.5
     "@sveltejs/adapter-auto": ^2.0.0
     "@sveltejs/adapter-cloudflare": ^2.2.2
-    "@sveltejs/kit": ^1.16.2
+    "@sveltejs/kit": ^1.20.4
     "@tailwindcss/typography": ^0.5.9
     "@tanstack/svelte-query": ^4.29.5
     "@typescript-eslint/eslint-plugin": ^5.45.0
