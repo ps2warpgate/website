@@ -373,12 +373,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@skeletonlabs/skeleton@npm:^1.2.5":
-  version: 1.2.5
-  resolution: "@skeletonlabs/skeleton@npm:1.2.5"
+"@skeletonlabs/skeleton@npm:^1.10.0":
+  version: 1.10.0
+  resolution: "@skeletonlabs/skeleton@npm:1.10.0"
   dependencies:
-    svelte: ^3.58.0
-  checksum: c56c45da9bd26acff9bbf0085750a24d38d46e5ed568d896f0f330c7e9ec980c9934cb7df71ef0716e918dd27f176dae7fa0e6db24521277eea00aee237842b5
+    esm-env: 1.0.0
+  peerDependencies:
+    svelte: ^3.56.0 || ^4.0.0
+  checksum: c67accf93b8c077590b4608fca8c1f97176a706c8ee8bcd65c29156b8999aa1b9098ed8df41ee49817c9aa3814ae9ba5c41e801069704dd611dd3c4eb84c05d4
   languageName: node
   linkType: hard
 
@@ -1524,7 +1526,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esm-env@npm:^1.0.0":
+"esm-env@npm:1.0.0, esm-env@npm:^1.0.0":
   version: 1.0.0
   resolution: "esm-env@npm:1.0.0"
   checksum: 3372b918ebb213b2c31e9a6ebc437e1f20062363413f837b6ca4c47bda38d7ba983c3a1a8eb8d9d8434969e9366bba8632743f1b8c7cf637a9c8a25ae95d865e
@@ -3404,13 +3406,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:^3.58.0":
-  version: 3.58.0
-  resolution: "svelte@npm:3.58.0"
-  checksum: c05625705961adc971e2bed6b86957c065f34e9d358390ad8dc953f8b4c956bb5ed297e3466f18c8080339cd26b973294489ee4094800fd75a8650fa1f6a9b52
-  languageName: node
-  linkType: hard
-
 "svelte@npm:^3.59.0":
   version: 3.59.0
   resolution: "svelte@npm:3.59.0"
@@ -3852,7 +3847,7 @@ __metadata:
   resolution: "website@workspace:."
   dependencies:
     "@playwright/test": ^1.28.1
-    "@skeletonlabs/skeleton": ^1.2.5
+    "@skeletonlabs/skeleton": ^1.10.0
     "@sveltejs/adapter-auto": ^2.0.0
     "@sveltejs/adapter-cloudflare": ^2.2.2
     "@sveltejs/kit": ^1.16.2
